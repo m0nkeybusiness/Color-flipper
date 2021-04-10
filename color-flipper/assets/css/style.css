@@ -1,0 +1,31 @@
+body {
+   transition: all 0.7s;
+}
+
+#main {
+   width: 1200px;
+   margin: 0 auto;
+}  
+
+#main p {
+   text-align: center;
+   padding: 50px;
+   font-size: 40px;
+}
+
+#main button {
+   display: inline-block;
+   width: 200px;
+   padding: 15px;
+   font-size: 15px;
+   font-weight: bold;
+   border-radius: 30px;
+}
+
+.btns_holder {
+   padding-top: 50px;
+   width: 70%;
+   margin: 0 auto;
+   display: flex;
+   justify-content: space-around;
+}
