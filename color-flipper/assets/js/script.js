@@ -51,29 +51,17 @@ let COLOR_LIST = [
    '#6666FF',
 ];
 
-const p = document.querySelector('p');
-const btn = document.querySelector('button');
-const partyBtn = document.querySelector('.party');
-
-let random = () => Math.floor(Math.random() * COLOR_LIST.length);
-
-function defaultRender() {
-   const randNum = random();
-   p.textContent = `Background-color: ${COLOR_LIST[randNum]}`;
-   document.body.style.backgroundColor = COLOR_LIST[randNum];
-}
-
 function changeBackround() {
-   let rand = Math.floor(Math.random() * COLOR_LIST.length);
-   p.textContent = `Background-color: ${COLOR_LIST[rand]}`;
+   const rand = Math.floor(Math.random() * COLOR_LIST.length);
+   document.querySelector(
+      'p'
+   ).textContent = `Background-color: ${COLOR_LIST[rand]}`;
    document.body.style.backgroundColor = COLOR_LIST[rand];
 }
 
 function partyMode() {
    let timerId = setInterval(() => {
-      let randNum = Math.floor(Math.random() * COLOR_LIST.length);
-      document.body.style.backgroundColor = COLOR_LIST[randNum];
-      p.textContent = `Background-color: ${COLOR_LIST[randNum]}`;
+      changeBackround();
    }, 500);
    setTimeout(() => {
       clearInterval(timerId);
@@ -81,16 +69,14 @@ function partyMode() {
 }
 
 function main() {
-   defaultRender();
-   const confirmed = confirm('Are you an epileptic?');
+   const btn = document.querySelector('button');
+   const partyBtn = document.querySelector('.party');
 
-   if (confirmed) {
-      partyBtn.disabled = true;
-      btn.addEventListener('click', changeBackround);
-   } else {
-      btn.addEventListener('click', changeBackround);
-      partyBtn.addEventListener('click', partyMode);
-   }
+   changeBackround();
+   confirm('Are you epileptic?')
+      ? (partyBtn.disabled = true)
+      : partyBtn.addEventListener('click', partyMode);
+   btn.addEventListener('click', changeBackround);
 }
 
 main();
